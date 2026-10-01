@@ -36,6 +36,15 @@
       height: 540px;
       border: 1px solid #ccc;
     }
+
+    #success {
+  display: none;
+  margin-top: 25px;
+  padding: 15px;
+  background: #e8f5e9;
+  border-radius: 10px;
+  font-weight: bold;
+}
   </style>
 </head>
 
@@ -57,7 +66,19 @@
       frameborder="0">
     </iframe>
 
+    <div id="success">
+  🎉 CAPTCHA complete! The gate is unlocked!
+</div>
+
   </div>
 
+<script>
+  window.addEventListener("message", (event) => {
+    if (event.data.type === "captcha-completed") {
+      document.getElementById("success").style.display = "block";
+    }
+  });
+</script>
+  
 </body>
 </html>
